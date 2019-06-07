@@ -1,0 +1,62 @@
+<form [formGroup]="formName" (ngSubmit)="loadFormArray()">
+  <div class="row col-md-12">
+  <div class="form-group col-md-4">
+    <label for="personName">Person Name</label>
+    <input type="text" class="form-control" formControlName="personName" [ngClass]="{ 'is-invalid':hasFieldError(f.personName) }" >
+    <div *ngIf="hasFieldError(f.personName)" class="invalid-feedback">
+        <div *ngIf="f.personName.errors.required">Person Name is required</div>
+    </div>
+  </div>
+  <div class="form-group col-md-4">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" formControlName="password" [ngClass]="{ 'is-invalid':hasFieldError(f.password) }" >
+    <div *ngIf="hasFieldError(f.password)" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password  is required</div>
+        <div *ngIf="f.password.errors.maxlength">Please Enter maximum 15 character</div>
+        <div *ngIf="f.password.errors.minlength">Please Enter minimum 5 character</div>
+    </div>
+  </div>
+  
+    <div class="form-group col-md-4">
+        <label for="confirmPassword">Confirm Password</label>
+    <input type="password" class="form-control" formControlName="confirmPassword" 
+    [ngClass]="{ 'is-invalid':  hasFieldError(f.confirmPassword) }" >
+    <div *ngIf="hasFieldError(f.confirmPassword)" class="invalid-feedback">
+        <div *ngIf="f.confirmPassword.errors.required">Confirm Password  is required</div>
+        <div *ngIf="f.confirmPassword.errors.mustMatch">Password must match</div>
+    </div>
+  </div>
+  <div class="form-group col-md-4">
+      <label for="mobileNumber">Mobile Number</label>
+       <!-- pattern="[0-9]*" use as attribute also -->
+  <input type="text" class="form-control"  formControlName="mobileNumber" [ngClass]="{ 'is-invalid':  hasFieldError(f.mobileNumber)}" >
+  <div *ngIf=" hasFieldError(f.mobileNumber)" class="invalid-feedback">
+      <div *ngIf="f.mobileNumber.errors.required">Mobile Number is required</div>
+      <div *ngIf="f.mobileNumber.errors.minlength ">Please Enter minimum 10 character</div>
+      <div *ngIf="f.mobileNumber.errors.maxlength ">Please Enter max 12 character</div>
+      <div *ngIf="f.mobileNumber.errors.pattern">Not Valid number</div>
+  </div>
+  
+</div>
+
+</div>
+  
+  &nbsp;
+  <button type="button" class="btn btn-warning" (click)="addForm()">Add</button>
+  <div formArrayName="addFormArray" class="form-group" *ngFor="let item of fctrl.controls;let i=index">
+    <div [formGroupName]='i'>
+    <label for="{{'phoneNumber'+i}}">Phone Number</label>
+    <input type="text-area" class="form-control" formControlName='phoneNumber' id="{{'phoneNumber'+i}}">
+
+    <label for="{{'email'+i}}">email</label>
+    <input type="text" class="form-control" formControlName='email' id="{{'email'+i}}">
+  </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+  
+</form>
+&nbsp;
+<div>
+  <input type="text" class="form-control">
+</div>
