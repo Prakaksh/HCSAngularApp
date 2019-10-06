@@ -43,7 +43,7 @@
   
   &nbsp;
   <button type="button" class="btn btn-warning" (click)="addForm()">Add</button>
-  <div formArrayName="addFormArray" class="form-group" *ngFor="let item of fctrl.controls;let i=index">
+  <!-- <div formArrayName="addFormArray" class="form-group" *ngFor="let item of fctrl.controls;let i=index">
     <div [formGroupName]='i'>
     <label for="{{'phoneNumber'+i}}">Phone Number</label>
     <input type="text-area" class="form-control" formControlName='phoneNumber' id="{{'phoneNumber'+i}}">
@@ -51,7 +51,7 @@
     <label for="{{'email'+i}}">email</label>
     <input type="text" class="form-control" formControlName='email' id="{{'email'+i}}">
   </div>
-  </div>
+  </div> -->
 
   <button type="submit" class="btn btn-primary">Submit</button>
   
